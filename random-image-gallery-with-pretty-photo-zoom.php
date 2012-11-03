@@ -4,7 +4,7 @@ Plugin Name: Random image gallery with pretty photo zoom
 Plugin URI: http://www.gopiplus.com/work/2011/12/12/wordpress-plugin-random-image-gallery-with-pretty-photo-zoom/
 Description: This plug-in which allows you to simply and easily show random image anywhere in your template files or using widgets with onclick pretty photo zoom effect. 
 Author: Gopi.R
-Version: 5.0
+Version: 6.0
 Author URI: http://www.gopiplus.com/work/2011/12/12/wordpress-plugin-random-image-gallery-with-pretty-photo-zoom/
 Donate link: http://www.gopiplus.com/work/2011/12/12/wordpress-plugin-random-image-gallery-with-pretty-photo-zoom/
 License: GPLv2 or later
@@ -248,53 +248,50 @@ function rigwppz_admin_option()
 	<form name="form_hsa" method="post" action="">
 	<table width="100%" border="0" cellspacing="0" cellpadding="3"><tr><td align="left">
 	<?php
-	echo '<p>Title(Only for widget):<br><input  style="width: 450px;" maxlength="200" type="text" value="';
+	echo '<p>Title (Only for widget):<br><input  style="width: 450px;" maxlength="200" type="text" value="';
 	echo $rigwppz_title . '" name="rigwppz_title" id="rigwppz_title" /></p>';
 	
-	echo '<p>Width(Only for widget):<br><input  style="width: 250px;" maxlength="3" type="text" value="';
-	echo $rigwppz_width . '" name="rigwppz_width" id="rigwppz_width" />(Only Number)</p>';
+	echo '<p>Width (Only for widget):<br><input  style="width: 250px;" maxlength="3" type="text" value="';
+	echo $rigwppz_width . '" name="rigwppz_width" id="rigwppz_width" /> (Only Number)</p>';
 	
-	echo '<p>Theme(Only for widget):<br><input  style="width: 250px;" maxlength="15" type="text" value="';
-	echo $rigwppz_theme . '" name="rigwppz_theme" id="rigwppz_theme" />(dark_rounded/dark_square/default/light_rounded/facebook/light_square)</p>';
+	echo '<p>Theme (Only for widget):<br><input  style="width: 250px;" maxlength="15" type="text" value="';
+	echo $rigwppz_theme . '" name="rigwppz_theme" id="rigwppz_theme" /> (dark_rounded/dark_square/default/light_rounded/facebook/light_square)</p>';
 	
 	echo '<p>Display Sidebar Title:<br><input maxlength="3" style="width: 250px;" type="text" value="';
 	
-	echo $rigwppz_title_yes . '" name="rigwppz_title_yes" id="rigwppz_title_yes" />(YES/NO)</p>';
-	echo '<p>Image directory(Widget):<br><input  style="width: 550px;" type="text" value="';
+	echo $rigwppz_title_yes . '" name="rigwppz_title_yes" id="rigwppz_title_yes" /> (YES/NO)</p>';
+	echo '<p>Image directory (Widget):<br><input  style="width: 550px;" type="text" value="';
 	echo $rigwppz_dir . '" name="rigwppz_dir" id="rigwppz_dir" /></p>';
 	
-	echo '<p>Image directory(DIR1):<br><input  style="width: 550px;" type="text" value="';
+	echo '<p>Image directory (DIR1):<br><input  style="width: 550px;" type="text" value="';
 	echo $rigwppz_dir1 . '" name="rigwppz_dir1" id="rigwppz_dir1" /></p>';
 	
-	echo '<p>Image directory(DIR2):<br><input  style="width: 550px;" type="text" value="';
+	echo '<p>Image directory (DIR2):<br><input  style="width: 550px;" type="text" value="';
 	echo $rigwppz_dir2 . '" name="rigwppz_dir2" id="rigwppz_dir2" /></p>';
 	
-	echo '<p>Image directory(DIR3):<br><input  style="width: 550px;" type="text" value="';
+	echo '<p>Image directory (DIR3):<br><input  style="width: 550px;" type="text" value="';
 	echo $rigwppz_dir3 . '" name="rigwppz_dir3" id="rigwppz_dir3" /></p>';
 	
-	echo '<p>Image directory(DIR4):<br><input  style="width: 550px;" type="text" value="';
+	echo '<p>Image directory (DIR4):<br><input  style="width: 550px;" type="text" value="';
 	echo $rigwppz_dir4 . '" name="rigwppz_dir4" id="rigwppz_dir4" /></p>';
 	
-	echo '<p>Image directory(DIR5):<br><input  style="width: 550px;" type="text" value="';
+	echo '<p>Image directory (DIR5):<br><input  style="width: 550px;" type="text" value="';
 	echo $rigwppz_dir5 . '" name="rigwppz_dir5" id="rigwppz_dir5" /></p>';
 	
-	echo '<p>Default Image directory:<br>wp-content/plugins/random-image-gallery-with-pretty-photo-zoom/random-gallery/<br>';
-	echo 'Dont upload your original images into this defult folder, instead you change this default path to original path from the above text box.</p>';
+	echo '<p>Default Image directory:<br>wp-content/plugins/random-image-gallery-with-pretty-photo-zoom/random-gallery/</p>';
 	echo '<input name="rigwppz_submit" id="rigwppz_submit" class="button-primary" value="Submit" type="submit" />';
+	echo '';
 	?>
 	</td><td align="center" valign="middle"> </td></tr></table>
 	</form>
-    <h2>Drag and drop the widget</h2>
-	Go to widget menu and drag and drop the "R I G W PP Z" widget to your sidebar location. <br />
-    <h2>Paste the below php code to your php file</h2>
-    <div style="padding-top:7px;padding-bottom:7px;">
-    <code style="padding:7px;">
-    &lt;?php if (function_exists (rigwppz_show)) rigwppz_show(); ?&gt;
-    </code></div>
-    <h2>Short code to add images into posts and pages</h2>
-    <a target="_blank" href='http://www.gopiplus.com/work/2011/12/12/wordpress-plugin-random-image-gallery-with-pretty-photo-zoom/'>Click here</a> to find the short code. <br> 
-	<h2>Plugin live demo and Help</h2>
+	<h2>Plugin configuration</h2>
+	<ol>
+		<li>Drag and drop the widget</li>
+		<li>Short code available for posts and pages</li>
+		<li>Add given PHP code directly into the theme</li>
+	</ol>
 	Check official website for more information <a target="_blank" href='http://www.gopiplus.com/work/2011/12/12/wordpress-plugin-random-image-gallery-with-pretty-photo-zoom/'>Click here</a><br> 
+	Note: Dont upload your original images into this defult folder, instead you change this default path to original path from the above text box.
     <br>
 	<?php
 	echo "</div>";
