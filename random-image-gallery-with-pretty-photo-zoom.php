@@ -4,7 +4,7 @@ Plugin Name: Random image gallery with pretty photo zoom
 Plugin URI: http://www.gopiplus.com/work/2011/12/12/wordpress-plugin-random-image-gallery-with-pretty-photo-zoom/
 Description: This plug-in which allows you to simply and easily show random image anywhere in your template files or using widgets with onclick pretty photo zoom effect. 
 Author: Gopi.R
-Version: 6.0
+Version: 6.1
 Author URI: http://www.gopiplus.com/work/2011/12/12/wordpress-plugin-random-image-gallery-with-pretty-photo-zoom/
 Donate link: http://www.gopiplus.com/work/2011/12/12/wordpress-plugin-random-image-gallery-with-pretty-photo-zoom/
 License: GPLv2 or later
@@ -26,10 +26,10 @@ function rigwppz_show()
 	{
 	$ScriptInserted = true;
     ?><script type="text/javascript" charset="utf-8">
-  $(document).ready(function(){
-    $("a[rel^='prettyPhoto']").prettyPhoto({
-overlay_gallery: false, "theme": '<?php echo $rigwppz_theme; ?>', social_tools: false
-});
+	  jQuery(document).ready(function(){
+		jQuery("a[rel^='prettyPhoto']").prettyPhoto({
+	overlay_gallery: false, "theme": '<?php echo $rigwppz_theme; ?>', social_tools: false
+	});
   });
 </script><?php
 }
@@ -173,7 +173,7 @@ function rigwppz_shortcode( $atts )
 	if (!isset($ScriptInserted) || $ScriptInserted !== true)
 	{
 		$ScriptInserted = true;
-		$rigwfz = $rigwfz . '<script type="text/javascript" charset="utf-8">$(document).ready(function(){$("a[rel^='.$prettyPhoto.']").prettyPhoto({overlay_gallery: false, "theme": '.$rigwppz_theme.', social_tools: false});});</script>';
+		$rigwfz = $rigwfz . '<script type="text/javascript" charset="utf-8">jQuery(document).ready(function(){jQuery("a[rel^='.$prettyPhoto.']").prettyPhoto({overlay_gallery: false, "theme": '.$rigwppz_theme.', social_tools: false});});</script>';
 	}
 	
 	return $rigwfz;	
@@ -319,7 +319,7 @@ function rigwppz_widget_init()
 
 function rigwppz_deactivation() 
 {
-
+	// No action required.
 }
 
 function rigwppz_add_to_menu() 
@@ -336,7 +336,7 @@ function rigwppz_add_javascript_files()
 {
 	if (!is_admin())
 	{
-		wp_enqueue_script( 'jquery-1.6.1.min', get_option('siteurl').'/wp-content/plugins/random-image-gallery-with-pretty-photo-zoom/js/jquery-1.6.1.min.js');
+		wp_enqueue_script('jquery');
 		wp_enqueue_style( 'prettyPhoto', get_option('siteurl').'/wp-content/plugins/random-image-gallery-with-pretty-photo-zoom/css/prettyPhoto.css','','','screen');
 		wp_enqueue_script( 'jquery.prettyPhoto', get_option('siteurl').'/wp-content/plugins/random-image-gallery-with-pretty-photo-zoom/js/jquery.prettyPhoto.js');
 	}	
