@@ -5,8 +5,8 @@ Author URI: http://www.gopiplus.com/work/2011/12/12/wordpress-plugin-random-imag
 Plugin URI: http://www.gopiplus.com/work/2011/12/12/wordpress-plugin-random-image-gallery-with-pretty-photo-zoom/
 Tags: Pretty Photo, Random Image, Gallery
 Requires at least: 3.0
-Tested up to: 3.5
-Stable tag: 6.1
+Tested up to: 3.6
+Stable tag: 7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	
@@ -103,6 +103,12 @@ Tested up to WordPress 3.5
 Avoid registering the alternate jQuery.
 From this version we are using existing wordpress jQuery.
 
+= 7.0 =
+
+Tested up to 3.6
+Added few security features.
+New admin layout.
+
 == Changelog ==
 
 = 1.0 =
@@ -135,3 +141,9 @@ Tested up to 3.4.2
 Tested up to WordPress 3.5
 Avoid registering the alternate jQuery.
 From this version we are using existing wordpress jQuery.
+
+= 7.0 =
+
+Tested up to 3.6
+Added few security features.
+New admin layout.
