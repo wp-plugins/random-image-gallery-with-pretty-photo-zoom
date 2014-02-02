@@ -4,7 +4,7 @@ Plugin Name: Random image gallery with pretty photo zoom
 Plugin URI: http://www.gopiplus.com/work/2011/12/12/wordpress-plugin-random-image-gallery-with-pretty-photo-zoom/
 Description: This plug-in which allows you to simply and easily show random image anywhere in your template files or using widgets with onclick pretty photo zoom effect. 
 Author: Gopi.R
-Version: 7.0
+Version: 7.1
 Author URI: http://www.gopiplus.com/work/2011/12/12/wordpress-plugin-random-image-gallery-with-pretty-photo-zoom/
 Donate link: http://www.gopiplus.com/work/2011/12/12/wordpress-plugin-random-image-gallery-with-pretty-photo-zoom/
 License: GPLv2 or later
@@ -151,11 +151,14 @@ function rigwppz_shortcode( $atts )
 	$imgs = dir($img_folder);
 	
 	//read all files from the  directory, checks if are images and ads them to a list (see below how to display flash banners)
-	while ($file = $imgs->read()) {
-	if (eregi("gif", $file) || eregi("jpg", $file) || eregi("png", $file))
-	$imglist .= "$file ";
-	
-	} closedir($imgs->handle);
+	while ($file = $imgs->read()) 
+	{
+		if(strpos(strtoupper($file), '.JPG') > 0 or strpos(strtoupper($file), '.GIF') >0 or strpos(strtoupper($file), '.GIF') > 0 )
+		{
+		$imglist .= "$file ";
+		}
+	} 
+	closedir($imgs->handle);
 	
 	//put all images into an array
 	$imglist = explode(" ", $imglist);
@@ -213,7 +216,7 @@ function rigwppz_admin_option()
   <div class="form-wrap">
     <div id="icon-edit" class="icon32 icon32-posts-post"><br>
     </div>
-    <h2>Random image gallery with pretty photo zoom (R I G W PP Z)</h2>
+    <h2><?php _e('Random image gallery with pretty photo zoom (R I G W PP Z)','rigwppz'); ?></h2>
     <?php
 	$rigwppz_title = get_option('rigwppz_title');
 	$rigwppz_width = get_option('rigwppz_width');
@@ -258,22 +261,22 @@ function rigwppz_admin_option()
 		
 		?>
 		<div class="updated fade">
-			<p><strong>Details successfully updated.</strong></p>
+			<p><strong><?php _e('Details successfully updated.','rigwppz'); ?></strong></p>
 		</div>
 		<?php
 	}
 	?>
 	<form name="rigwppz_form" method="post" action="">
-		<h3>Plugin configuration (Widget)</h3>
-		<label for="tag-title">Widget title</label>
+		<h3><?php _e('Plugin configuration (Widget)','rigwppz'); ?></h3>
+		<label for="tag-title"><?php _e('Widget title','rigwppz'); ?></label>
 		<input name="rigwppz_title" type="text" id="rigwppz_title" size="70" maxlength="200" value="<?php echo $rigwppz_title; ?>" />
-		<p>Please enter your widget title.</p>
+		<p><?php _e('Please enter your widget title.','rigwppz'); ?></p>
 		
-		<label for="tag-title">Width (Only for widget)</label>
+		<label for="tag-title"><?php _e('Width (Only for widget)','rigwppz'); ?></label>
 		<input name="rigwppz_width" type="text" id="rigwppz_width" maxlength="3" value="<?php echo $rigwppz_width; ?>" />
-		<p>Please enter your width, this option is only for widget.</p>
+		<p><?php _e('Please enter your width, this option is only for widget.','rigwppz'); ?></p>
 		
-		<label for="tag-title">Theme (Only for widget)</label>
+		<label for="tag-title"><?php _e('Theme (Only for widget)','rigwppz'); ?></label>
 		<select name="rigwppz_theme" id="rigwppz_theme">
             <option value='dark_rounded' <?php if($rigwppz_theme == 'dark_rounded') { echo 'selected' ; } ?>>Dark Rounded</option>
             <option value='dark_square' <?php if($rigwppz_theme == 'dark_square') { echo 'selected' ; } ?>>Dark Square</option>
@@ -282,40 +285,42 @@ function rigwppz_admin_option()
 			<option value='facebook' <?php if($rigwppz_theme == 'facebook') { echo 'selected' ; } ?>>Facebook</option>
 			<option value='light_square' <?php if($rigwppz_theme == 'light_square') { echo 'selected' ; } ?>>Light Square</option>
           </select>
-		<p>Please select your theme, this option is only for widget.</p>
+		<p><?php _e('Please select your theme, this option is only for widget.','rigwppz'); ?></p>
 		
-		<label for="tag-title">Display sidebar title</label>
+		<label for="tag-title"><?php _e('Display sidebar title','rigwppz'); ?></label>
 		<select name="rigwppz_title_yes" id="rigwppz_title_yes">
 			<option value='YES' <?php if($rigwppz_title_yes == 'YES') { echo 'selected="selected"' ; } ?>>Yes</option>
 			<option value='NO' <?php if($rigwppz_title_yes == 'NO') { echo 'selected="selected"' ; } ?>>No</option>
 		</select>
-		<p>Do you want to show title on your sidebar, this option is only for widget.</p>
+		<p><?php _e('Do you want to show title on your sidebar, this option is only for widget.','rigwppz'); ?></p>
 		
-		<label for="tag-title">Image directory (Widget)</label>
+		<label for="tag-title"><?php _e('Image directory (Widget)','rigwppz'); ?></label>
 		<input name="rigwppz_dir" type="text" id="rigwppz_dir" size="110" value="<?php echo $rigwppz_dir; ?>" />
-		<p>Please enter your image directory, this option is only for widget.</p>
+		<p><?php _e('Please enter your image directory, this option is only for widget.','rigwppz'); ?>
+		(Example: wp-content/plugins/random-image-gallery-with-pretty-photo-zoom/random-gallery/)
+		</p>
 		
-		<h3>Plugin configuration (Short Code)</h3>
+		<h3><?php _e('Plugin configuration (Short Code)','rigwppz'); ?></h3>
 		
-		<label for="tag-title">Image directory (DIR1)</label>
+		<label for="tag-title"><?php _e('Image directory','rigwppz'); ?> (DIR1)</label>
 		<input name="rigwppz_dir1" type="text" id="rigwppz_dir1" size="110" value="<?php echo $rigwppz_dir1; ?>" />
-		<p>Please enter your image directory. (DIR1)</p>
+		<p><?php _e('Please enter your image directory.','rigwppz'); ?> (DIR1) (Example: wp-content/plugins/random-image-gallery-with-pretty-photo-zoom/random-gallery/)</p>
 		
-		<label for="tag-title">Image directory (DIR2)</label>
+		<label for="tag-title"><?php _e('Image directory','rigwppz'); ?> (DIR2)</label>
 		<input name="rigwppz_dir2" type="text" id="rigwppz_dir2" size="110" value="<?php echo $rigwppz_dir2; ?>" />
-		<p>Please enter your image directory. (DIR2)</p>
+		<p><?php _e('Please enter your image directory.','rigwppz'); ?> (DIR2)</p>
 		
-		<label for="tag-title">Image directory (DIR3)</label>
+		<label for="tag-title"><?php _e('Image directory','rigwppz'); ?> (DIR3)</label>
 		<input name="rigwppz_dir3" type="text" id="rigwppz_dir3" size="110" value="<?php echo $rigwppz_dir3; ?>" />
-		<p>Please enter your image directory. (DIR3)</p>
+		<p><?php _e('Please enter your image directory.','rigwppz'); ?> (DIR3)</p>
 		
-		<label for="tag-title">Image directory (DIR4)</label>
+		<label for="tag-title"><?php _e('Image directory','rigwppz'); ?> (DIR4)</label>
 		<input name="rigwppz_dir4" type="text" id="rigwppz_dir4" size="110" value="<?php echo $rigwppz_dir4; ?>" />
-		<p>Please enter your image directory. (DIR4)</p>
+		<p><?php _e('Please enter your image directory.','rigwppz'); ?> (DIR4)</p>
 		
-		<label for="tag-title">Image directory (DIR5)</label>
+		<label for="tag-title"><?php _e('Image directory','rigwppz'); ?> (DIR5)</label>
 		<input name="rigwppz_dir5" type="text" id="rigwppz_dir5" size="110" value="<?php echo $rigwppz_dir5; ?>" />
-		<p>Please enter your image directory. (DIR5)</p>
+		<p><?php _e('Please enter your image directory.','rigwppz'); ?> (DIR5)</p>
 		
 		<div style="height:10px;"></div>
 		<input type="hidden" name="rigwppz_form_submit" value="yes"/>
@@ -323,15 +328,16 @@ function rigwppz_admin_option()
 		<?php wp_nonce_field('rigwppz_form_setting'); ?>
 	</form>
   </div>
-	<h3>Plugin configuration option</h3>
+	<h3><?php _e('Plugin configuration option','rigwppz'); ?></h3>
 	<ol>
-		<li>Add the plugin in the posts or pages using short code.</li>
-		<li>Add directly in to the theme using PHP code.</li>
-		<li>Drag and drop the widget to your sidebar.</li>
+		<li><?php _e('Add the plugin in the posts or pages using short code.','rigwppz'); ?></li>
+		<li><?php _e('Add directly in to the theme using PHP code.','rigwppz'); ?></li>
+		<li><?php _e('Drag and drop the widget to your sidebar.','rigwppz'); ?></li>
 	</ol>
   <p class="description">
-  Check official website for more information <a target="_blank" href="http://www.gopiplus.com/work/2011/12/12/wordpress-plugin-random-image-gallery-with-pretty-photo-zoom/">click here</a>
-  <br />Note: Dont upload your original images into the defult folder (or) Plugin folder.
+   <?php _e('Check official website for more information','rigwppz'); ?>
+  <a target="_blank" href="http://www.gopiplus.com/work/2011/12/12/wordpress-plugin-random-image-gallery-with-pretty-photo-zoom/"><?php _e('click here','rigwppz'); ?></a>
+  <br /><?php _e('Note: Dont upload your original images into the defult folder (or) Plugin folder.','rigwppz'); ?>
   </p>
 </div>
 	<?php
@@ -339,21 +345,23 @@ function rigwppz_admin_option()
 
 function rigwppz_control()
 {
-	echo '<p>Random image gallery with pretty photo zoom. to change the setting goto R I G W PP Z link on Setting menu.';
-	echo ' <a href="options-general.php?page=random-image-gallery-with-pretty-photo-zoom">';
-	echo 'click here</a></p>';
+	echo '<p><b>';
+	_e('Random image gallery', 'rigwppz');
+	echo '.</b> ';
+	_e('Check official website for more information', 'rigwppz');
+	?> <a target="_blank" href="http://www.gopiplus.com/work/2011/12/12/wordpress-plugin-random-image-gallery-with-pretty-photo-zoom/"><?php _e('click here', 'rigwppz'); ?></a></p><?php
 }
 
 function rigwppz_widget_init() 
 {
 	if(function_exists('wp_register_sidebar_widget')) 	
 	{
-		wp_register_sidebar_widget('rigwfz', 'R I G W PP Z', 'rigwppz_widget');
+		wp_register_sidebar_widget('rigwfz', __('R I G W PP Z','rigwppz'), 'rigwppz_widget');
 	}
 	
 	if(function_exists('wp_register_widget_control')) 	
 	{
-		wp_register_widget_control('rigwfz', array('R I G W PP Z', 'widgets'), 'rigwppz_control');
+		wp_register_widget_control('rigwfz', array(__('R I G W PP Z','rigwppz'), 'widgets'), 'rigwppz_control');
 	} 
 }
 
@@ -364,7 +372,8 @@ function rigwppz_deactivation()
 
 function rigwppz_add_to_menu() 
 {
-	add_options_page('Random image gallery with pretty photo zoom - R I G W PP Z', 'R I G W PP Z', 'manage_options', 'random-image-gallery-with-pretty-photo-zoom', 'rigwppz_admin_option' );
+	add_options_page(__('Random image gallery with pretty photo zoom - R I G W PP Z','rigwppz'), 
+				__('R I G W PP Z','rigwppz'), 'manage_options', 'random-image-gallery-with-pretty-photo-zoom', 'rigwppz_admin_option' );
 }
 
 if (is_admin()) 
@@ -382,6 +391,12 @@ function rigwppz_add_javascript_files()
 	}	
 }
 
+function rigwppz_textdomain()
+{
+	  load_plugin_textdomain( 'rigwppz', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+}
+
+add_action('plugins_loaded', 'rigwppz_textdomain');
 add_action('wp_enqueue_scripts', 'rigwppz_add_javascript_files');
 add_action("plugins_loaded", "rigwppz_widget_init");
 register_activation_hook(__FILE__, 'rigwppz_install');
