@@ -5,8 +5,8 @@ Author URI: http://www.gopiplus.com/work/2011/12/12/wordpress-plugin-random-imag
 Plugin URI: http://www.gopiplus.com/work/2011/12/12/wordpress-plugin-random-image-gallery-with-pretty-photo-zoom/
 Tags: Pretty Photo, Random Image, Gallery
 Requires at least: 3.0
-Tested up to: 3.8
-Stable tag: 7.1
+Tested up to: 3.9
+Stable tag: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	
@@ -115,6 +115,10 @@ New admin layout.
 2. Now this plugin supports localization (or internationalization). i.e. option to translate into other languages. 
 Plugin *.po file (rigwppz.po) available in the languages folder.
 
+= 7.2 =
+
+1. Tested up to 3.9
+
 == Changelog ==
 
 = 1.0 =
@@ -159,3 +163,7 @@ New admin layout.
 1. Tested up to 3.8
 2. Now this plugin supports localization (or internationalization). i.e. option to translate into other languages. 
 Plugin *.po file (rigwppz.po) available in the languages folder.
+
+= 7.2 =
+
+1. Tested up to 3.9
