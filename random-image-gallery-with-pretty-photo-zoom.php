@@ -4,7 +4,7 @@ Plugin Name: Random image gallery with pretty photo zoom
 Plugin URI: http://www.gopiplus.com/work/2011/12/12/wordpress-plugin-random-image-gallery-with-pretty-photo-zoom/
 Description: This plugin which allows you to simply and easily show random image anywhere in your template files or using widgets with onclick pretty photo zoom effect. 
 Author: Gopi Ramasamy
-Version: 7.4
+Version: 7.5
 Author URI: http://www.gopiplus.com/work/2011/12/12/wordpress-plugin-random-image-gallery-with-pretty-photo-zoom/
 Donate link: http://www.gopiplus.com/work/2011/12/12/wordpress-plugin-random-image-gallery-with-pretty-photo-zoom/
 License: GPLv2 or later
